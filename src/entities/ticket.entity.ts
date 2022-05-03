@@ -24,9 +24,19 @@ export class Ticket extends BaseEntity {
   @ManyToOne(() => Event, event => event.tickets)
   event: Event;
 
+  @Column({ nullable: false })
+  eventId: number;
+
   @ManyToOne(() => TicketType, ticketType => ticketType.tickets)
   ticketType: TicketType;
 
+  @Column()
+  @IsNotEmpty()
+  ticketTypeId: number;
+
   @ManyToOne(() => Reservation, reservation => reservation.tickets)
   reservation: Reservation;
+
+  @Column({ nullable: true })
+  reservationId: number;
 }

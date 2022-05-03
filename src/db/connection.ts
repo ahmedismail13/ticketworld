@@ -8,5 +8,4 @@ export const dbConnection = new DataSource({
   synchronize: true,
   logging: true,
   entities: [env === 'production' ? 'dist/entities/*{.ts,.js}' : 'src/entities/*{.ts,.js}'],
-  dropSchema: true,
 });
