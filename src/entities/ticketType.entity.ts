@@ -16,9 +16,6 @@ export class TicketType extends BaseEntity {
   @IsNotEmpty()
   price: number;
 
-  @Column()
-  quantity: number;
-
   @ManyToOne(() => Event, event => event.ticketTypes)
   event: Event;
 

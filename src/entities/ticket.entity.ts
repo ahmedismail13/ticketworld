@@ -11,11 +11,7 @@ export class Ticket extends BaseEntity {
 
   @Column()
   @IsNotEmpty()
-  name: string;
-
-  @Column()
-  @IsNotEmpty()
-  date: Date;
+  seat_number: number;
 
   @Column()
   @CreateDateColumn()
@@ -24,9 +20,6 @@ export class Ticket extends BaseEntity {
   @Column()
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @Column()
-  type: number;
 
   @ManyToOne(() => Event, event => event.tickets)
   event: Event;

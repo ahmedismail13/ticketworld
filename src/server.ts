@@ -7,11 +7,12 @@ import IndexRoute from './api/routes/index.route';
 import ReservationsRoute from './api/routes/reservations.route';
 
 import validateEnv from './common/utils/validateEnv';
+import EventsRoute from './api/routes/events.route';
 
 (async () => {
   validateEnv();
   // , new UsersRoute()
-  const app = new App([new IndexRoute(), new AuthRoute(), new ReservationsRoute()]);
+  const app = new App([new IndexRoute(), new AuthRoute(), new ReservationsRoute(), new EventsRoute()]);
   await app.initializeApp();
   app.listen();
 })();
