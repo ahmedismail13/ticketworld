@@ -8,14 +8,13 @@ export class Reservation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  @IsNotEmpty()
-  date: Date;
+  @Column({ nullable: false })
+  totalPrice: number;
 
   @Column()
   paymentInProgress: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   payed: Date;
 
   @Column()
