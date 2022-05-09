@@ -5,7 +5,7 @@ class TicketsContoller {
 
   public getAllTicketsForAnEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const allTickets = await this.ticketsService.findAllTicketsForAnEvent(req.params.eventId);
+      const allTickets = await this.ticketsService.findAllTicketsForAnEvent(Number(req.params.id));
       res.status(200).json({ count: allTickets.length, data: allTickets });
     } catch (error) {
       next(error);

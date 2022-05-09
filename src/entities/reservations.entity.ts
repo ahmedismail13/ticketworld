@@ -8,7 +8,11 @@ export class Reservation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false })
+  @Column()
+  @IsNotEmpty()
+  type: number;
+
+  @Column({ nullable: false, type: 'decimal', precision: 10, scale: 2 })
   totalPrice: number;
 
   @Column()
