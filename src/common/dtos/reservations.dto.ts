@@ -1,10 +1,15 @@
-import { IsEnum, IsNumber } from 'class-validator';
-import { ReservationType } from '../utils/ReservationTypes';
+import { ArrayNotEmpty, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateReservationDto {
   @IsNumber({}, { each: true })
+  @ArrayNotEmpty()
   public tickets: number[];
 
-  @IsEnum(ReservationType)
-  public type: ReservationType;
+  @IsNumber()
+  @IsNotEmpty()
+  public type: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  eventId: number;
 }

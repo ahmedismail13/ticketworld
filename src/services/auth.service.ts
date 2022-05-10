@@ -19,10 +19,10 @@ class AuthService {
   }
 
   public async login(userData: LoginUserDto): Promise<{ token: string; findUser: User }> {
-    if (isEmpty(userData)) throw Boom.badRequest();
+    if (isEmpty(userData)) throw Boom.badRequest('Missing user data');
 
     const findUser: User = await User.findOne({ where: { email: userData.email } });
-    if (!findUser) throw Boom.notFound();
+    if (!findUser) throw Boom.notFound('Invalid email or password');
 
     const isPasswordMatching: boolean = await bcrypt.compare(userData.password, findUser.password);
     if (!isPasswordMatching) throw Boom.unauthorized();

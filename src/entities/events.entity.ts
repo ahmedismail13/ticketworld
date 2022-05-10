@@ -1,8 +1,6 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { Ticket } from './ticket.entity';
-import { TicketType } from './ticketType.entity';
-
 @Entity()
 export class Event extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -22,6 +20,13 @@ export class Event extends BaseEntity {
   @IsNotEmpty()
   date: Date;
 
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @IsNotEmpty()
+  ticketPrice: number;
+
+  @Column()
+  imagePath: string;
+
   @Column()
   @CreateDateColumn()
   createdAt: Date;
@@ -32,7 +37,4 @@ export class Event extends BaseEntity {
 
   @OneToMany(() => Ticket, ticket => ticket.event)
   tickets: Ticket[];
-
-  @OneToMany(() => TicketType, ticketType => ticketType.event)
-  ticketTypes: TicketType[];
 }

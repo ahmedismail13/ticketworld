@@ -1,12 +1,12 @@
-import { IsDateString, IsString, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
-import { CreateEventTypeDto } from './ticketType.dto';
+import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateEventDto {
   @IsString()
+  @IsNotEmpty()
   public name: string;
 
   @IsDateString()
+  @IsNotEmpty()
   public date: Date;
 
   @IsString()
@@ -15,7 +15,14 @@ export class CreateEventDto {
   @IsString()
   public venue: string;
 
-  @ValidateNested()
-  @Type(() => CreateEventTypeDto)
-  public ticketTypes: CreateEventTypeDto[];
+  @IsString()
+  public imagePath: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  public ticketPrice: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  public quantity: number;
 }

@@ -21,7 +21,9 @@ class EventsController {
         eventData.description,
         eventData.date,
         eventData.venue,
-        eventData.ticketTypes,
+        eventData.ticketPrice,
+        eventData.imagePath,
+        eventData.quantity,
       );
       res.status(201).json({ event });
     } catch (error) {
