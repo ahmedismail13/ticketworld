@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./
+    ports:
+      - 3000:3000
+    volumes:
+      - './:/src'
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ticketworld
+      DB_PASS: ticketworld
+      DB_NAME: ticketworld
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=ticketworld
+      - POSTGRES_PASSWORD=ticketworld
+      - POSTGRES_DB=ticketworld
+    restart: always
+    volumes:
+      - ticketworld:/var/lib/postgresql/data
+
+volumes:
+  ticketworld:
+    driver: local
+    
